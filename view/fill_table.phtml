@@ -1,0 +1,43 @@
+<?php include('elements/header-template.phtml'); ?>
+
+	<div class="alert alert-info" role="alert">
+		<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+		<span class="sr-only">Info:</span>
+		Se encontraron <?php echo count($table_detail); ?> fila(s) en la tabla <strong><?php echo $_GET["table"]; ?></strong>
+	</div>
+
+		<div class="table-responsive">
+			<table class="table table-bordered table-hover">
+				<tr class="active">
+					<th>Campo</th>
+					<th>Acciones</th>
+				</tr>
+				<?php for($i = 0; $i < count($table_detail); $i++){ ?>
+				<tr>
+					<td><?php echo $table_detail[$i]["Field"]; ?></td>
+					<?php
+					if($table_detail[$i]["Key"] == "PRI" or $table_detail[$i]["Extra"] == "auto_increment")
+					{
+						echo "<td>" . $table_detail[$i]["Key"] . " - " . $table_detail[$i]["Extra"] . "</td>";
+					}
+					else
+					{?>
+						<td>
+							<a href="<?php echo Conectar::ruta();?>?accion=fill_column&table=<?php echo $_GET["table"]; ?>&column=<?php echo $table_detail[$i]["Field"];?>" class="btn btn-success">Poblar campo</a>
+						</td>
+					<?php } ?>
+				</tr>
+				<?php } ?>
+			</table>
+		</div>
+
+		<a href="<?php echo Conectar::ruta();?>?accion=check_database" class="btn btn-primary">
+			<span class="glyphicon glyphicon-chevron-left"></span>
+			Volver
+		</a>
+
+		<a href="<?php echo Conectar::ruta();?>?accion=finish" class="btn btn-primary">
+			Finalizar
+			<span class="glyphicon glyphicon-log-out"></span>
+		</a>
+<?php include('elements/footer-template.phtml'); ?>

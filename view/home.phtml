@@ -1,0 +1,25 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+  <title>== Titulo de la Web ==</title>
+  <meta name="description" content="Descripcion de la Web" />
+  <meta name="keywords" content="palabra clave, palabra clave" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+  <link rel="stylesheet" type="text/css" href="<?php echo Conectar::ruta(); ?>css/estilos.css" />
+  <!-- modernizr habilita caracteristicas y elementos HTML5 -->
+  <script type="text/javascript" src="<?php echo Conectar::ruta(); ?>js/modernizr-2.6.2.min.js"></script>
+</head>
+<body>
+
+  <h2>
+    <?php
+      echo "Bienvenid@ ".$_SESSION["ses_login"];
+    ?>
+  </h2>
+
+  <!-- Cargando archivos Javascript -->
+  <script type="text/javascript" src="<?php echo Conectar::ruta(); ?>js/funciones.js"></script>
+
+</body>
+</html>

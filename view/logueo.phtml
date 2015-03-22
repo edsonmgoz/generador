@@ -1,0 +1,36 @@
+        <form name="form" action="" method="post">
+        <h2>Ingrese sus datos</h2>
+        <?php
+        if(isset($_GET["m"]))
+        {
+          switch ($_GET["m"]) {
+            case '1':
+              ?>
+              <h3 style="color: red;">Los datos están vacios.</h3>
+              <?php
+              break;
+            case '2':
+              ?>
+              <h3 style="color: red;">Los datos ingresados no existen en nuestros registros.</h3>
+              <?php
+              break;
+            case '3':
+              ?>
+              <h3 style="color: green;">Usted ha cerrado su sesión exitosamente.</h3>
+              <?php
+              break;
+          }
+        }
+        ?>
+
+        <br>
+        <b>Login:</b> <input type="text" name="login">
+        <br><br>
+        <b>Password:</b> <input type="password" name="pass">
+        <br><br>
+        <hr>
+        <br>
+        <input type="hidden" name="grabar" value="si">
+        <input class="button" type="button" value="Entrar" title="Entrar" onclick="document.form.submit();">
+
+        </form>

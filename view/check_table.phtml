@@ -1,0 +1,38 @@
+<?php include('elements/header-template.phtml'); ?>
+
+	<div class="alert alert-info" role="alert">
+		<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+		<span class="sr-only">Info:</span>
+		Se encontraron <?php echo count($table_detail); ?> fila(s) en la tabla <strong><?php echo $_GET["table"]; ?></strong>
+	</div>
+
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover">
+			<tr class="active">
+				<th>Campo</th>
+				<th>Tipo</th>
+				<th>Nulo</th>
+				<th>Key</th>
+				<th>Extra</th>
+			</tr>
+			<?php for($i = 0; $i < count($table_detail); $i++){ ?>
+			<tr>
+				<td><?php echo $table_detail[$i]["Field"]; ?></td>
+				<td><?php echo $table_detail[$i]["Type"]; ?></td>
+				<td><?php echo $table_detail[$i]["Null"]; ?></td>
+				<td><?php echo $table_detail[$i]["Key"]; ?></td>
+				<td><?php echo $table_detail[$i]["Extra"]; ?></td>
+			</tr>
+			<?php } ?>
+		</table>
+	</div>
+	<a href="<?php echo Conectar::ruta();?>?accion=check_database" class="btn btn-primary">
+		<span class="glyphicon glyphicon-chevron-left"></span>
+		Volver
+	</a>
+	<a href="<?php echo Conectar::ruta();?>?accion=finish" class="btn btn-primary">
+		Finalizar
+		<span class="glyphicon glyphicon-log-out"></span>
+	</a>
+
+<?php include('elements/footer-template.phtml'); ?>

@@ -1,0 +1,34 @@
+<?php include('elements/header-template.phtml'); ?>
+
+	<div class="alert alert-info" role="alert">
+		<span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+		<span class="sr-only">Info:</span>
+		Se encontraron <?php echo count($tables); ?> tabla(s) en la base de datos <strong><?php echo $_SESSION["database"]; ?></strong>
+	</div>
+
+
+	<div class="table-responsive">
+		<table class="table table-bordered table-hover">
+			<tr class="active">
+				<th>Tabla</th>
+				<th>Acciones</th>
+			</tr>
+			<?php for($i = 0; $i < count($tables); $i++){ ?>
+			<tr>
+				<td><?php echo $tables[$i][0]; ?></td>
+				<td>
+					<a href="<?php echo Conectar::ruta();?>?accion=check_table&table=<?php echo $tables[$i][0];?>" title="Detalle de la tabla <?php echo $tables[$i][0];?>" class="btn btn-info">Detalle</a>
+					<a href="<?php echo Conectar::ruta();?>?accion=fill_table&table=<?php echo $tables[$i][0]; ?>" class="btn btn-success">Poblar</a>
+				</td>
+			</tr>
+			<?php } ?>
+		</table>
+	</div>
+	<a href="<?php echo Conectar::ruta();?>?accion=finish" class="btn btn-primary">
+		Finalizar
+		<span class="glyphicon glyphicon-log-out"></span>
+	</a>
+
+
+
+<?php include('elements/footer-template.phtml'); ?>
